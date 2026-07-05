@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.12-slim
 
 ENV POETRY_VERSION=1.8.3
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -24,7 +24,7 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
 
 RUN poetry config virtualenvs.create false \
-    && poetry install --no-root --no-interaction --no-ansi --no-dev
+    && poetry install --no-root --no-interaction --no-ansi --without dev
 
 COPY . /app
 
